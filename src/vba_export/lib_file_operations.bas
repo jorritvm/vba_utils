@@ -188,6 +188,7 @@ Sub export_range_as_csv(filepath As String, range_to_export As Range)
 End Sub
 
 
+Sub export_sheet_as_csv(filepath As String, sheet_name As String)
 '***************************************************************************
 'Purpose: "export_sheet_as_csv" exports a CSV file required by the R Tirole
 '         output script
@@ -195,7 +196,6 @@ End Sub
 '         sheet_name: (string) containing the sheetname to be exported
 'Outputs: -
 '***************************************************************************
-Sub export_sheet_as_csv(filepath As String, sheet_name As String)
     Dim MyFileName As String
     Dim TempWB As Workbook
     Dim directory_path As String
@@ -218,6 +218,7 @@ Sub export_sheet_as_csv(filepath As String, sheet_name As String)
 End Sub
 
 
+Sub copy_all_files_in_folder(source_folder_path As String, target_folder_path As String)
 '***************************************************************************
 'Purpose: This Subroutine copies all files in the source folder
 '         to the target folder
@@ -225,8 +226,7 @@ End Sub
 '        target_folder_path (string) folderpath to create
 'Outputs: -
 '***************************************************************************
-Sub copy_all_files_in_folder(source_folder_path As String, target_folder_path As String)
-   Dim MyFile2 As String
+    Dim MyFile2 As String
    
    MyFile2 = Dir(source_folder_path & "/*.*")
    Do While MyFile2 <> ""
@@ -236,13 +236,13 @@ Sub copy_all_files_in_folder(source_folder_path As String, target_folder_path As
 End Sub
 
 
+Function get_newest_subfolder(ByRef path As String) As String
 '***************************************************************************
 'Purpose: "get_newest_subfolder" fetches the path to the latest antares ...
 '         simulation output folder
 'Inputs:  path: (string) path to output folder of antares model
 'Outputs: (string) path to latest simulation output
 '***************************************************************************
-Function get_newest_subfolder(ByRef path As String) As String
     Dim oFSO As Object
     Dim oFolder As Object
     Dim oSubFldr As Object
