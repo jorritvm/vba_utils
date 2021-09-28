@@ -291,8 +291,8 @@ Sub export_worksheets_to_csv_files(Optional ByVal wb As String = "", _
     End If
     
     If (do_screenupdating = False) Then
-        screenupdateingstate = Application.screenupdating
-        Application.screenupdating = False
+        screenupdateingstate = Application.ScreenUpdating
+        Application.ScreenUpdating = False
     End If
     
     If (path = "") Then
@@ -323,7 +323,7 @@ Sub export_worksheets_to_csv_files(Optional ByVal wb As String = "", _
     Next i
     
     If (do_screenupdating = False) Then
-        Application.screenupdating = screenupdateingstate
+        Application.ScreenUpdating = screenupdateingstate
     End If
     
     If (overwrite) Then

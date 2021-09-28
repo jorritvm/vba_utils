@@ -151,7 +151,7 @@ Public Function ShellAndWait(ShellCommand As String, _
     On Error Resume Next
     Err.Clear
     TaskID = shell(ShellCommand, ShellWindowState)
-    If (Err.Number <> 0) Or (TaskID = 0) Then
+    If (Err.number <> 0) Or (TaskID = 0) Then
         ShellAndWait = ShellAndWaitResult.Failure
         Exit Function
     End If
@@ -214,7 +214,7 @@ Public Function ShellAndWait(ShellCommand As String, _
     
 ErrH:
     Debug.Print "ErrH: Cancel: " & Application.EnableCancelKey
-    If Err.Number = ERR_BREAK_KEY Then
+    If Err.number = ERR_BREAK_KEY Then
         If BreakKey = ActionOnBreak.AbandonWait Then
             CloseHandle ProcHandle
             ShellAndWait = ShellAndWaitResult.UserWaitAbandoned
