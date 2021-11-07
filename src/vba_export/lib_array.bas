@@ -2,11 +2,11 @@ Attribute VB_Name = "lib_array"
 Option Explicit
 
 Public Sub Array_Transpose(ByRef ar_Array As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Transpose
 'This sub transposes an array
 'ar_Array : array to transpose
-'###########################################################################################################
+'***********************************************************************************
     Dim int_LB1, int_UB1, int_LB2, int_UB2, int_i, int_j As Integer
 
     int_LB1 = LBound(ar_Array, 1)
@@ -34,13 +34,13 @@ End Sub
 
 
 Public Sub Array_Rename(ByRef ar_Array As Variant, ByVal ar_cols As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Rename
 'This sub renames the column header (header is always written in the first row of an array)
 'ar_Array : array containing column header to rename
 'ar_cols : array containing the pairwise columns with old & new name - Example : arCols=array(array("old_col1","newcol_1"),array("old_col2","newcol_2"),..)
-'###########################################################################################################
-    Dim str_old_name, str_new_name As String
+'***********************************************************************************
+Dim str_old_name, str_new_name As String
     Dim int_old_col As Integer
     Dim cols As Variant
     
@@ -54,13 +54,13 @@ End Sub
 
 
 Public Function Array_Slice(ByRef ar_Array As Variant, ByVal int_slice_num As Integer) As Variant
-'###########################################################################################################
+'***********************************************************************************
 'Sub 'Array_Slice
-'This function returns the k-th slide or component of an array - Example : it will return x, y or z a for array(array("x(1)","y(1)","z(1)"),array("x(2)","y(2)","z(2)"))
+'This fct returns the k-th slide or component of an array - Example : it will return x, y or z a for array(array("x(1)","y(1)","z(1)"),array("x(2)","y(2)","z(2)"))
 'arArray : array containing data to slice
 'slice_num : slice/component/dimension to extract
-'###########################################################################################################
-    Dim int_LB, int_UB, int_i As Integer
+'***********************************************************************************
+Dim int_LB, int_UB, int_i As Integer
     Dim ar_ArraySlice As Variant
     
     int_LB = LBound(ar_Array, 1)
@@ -74,12 +74,12 @@ End Function
 
 
 Public Function Array_GetHeaders(ByRef ar_Array As Variant) As Variant
-'###########################################################################################################
+'***********************************************************************************
 'Sint_UB Array_GetHeaders
-'This function will return the headers(i.e. the first row) of an array into a new 1D-array
+'This fct will return the headers(i.e. the first row) of an array into a new 1D-array
 'ar_Array : the array containg the headers name to extract (located in the first row)
-'###########################################################################################################
-    Dim int_LB, int_UB, int_i As Integer
+'***********************************************************************************
+Dim int_LB, int_UB, int_i As Integer
     
     int_LB = LBound(ar_Array, 2)
     int_UB = UBound(ar_Array, 2)
@@ -91,14 +91,14 @@ End Function
 
 Public Sub Array_Keep(ByRef ar_Array As Variant, Optional ByVal int_col_nums = Empty, Optional ByVal ar_headers = Empty, _
 Optional ByVal bo_order = False)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Keep
 'This sub keeps only the columns of a given array with header name in a specified list
 'ar_Array : the array containing the ar_headers & the data
 'int_col_nums : the column numbers to keep (only used if ar_headers is empty)
 'ar_headers : the header names to keep
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2, int_Total, int_ToKeep, int_ToDrop As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2, int_Total, int_ToKeep, int_ToDrop As Integer
     Dim int_i, int_j, int_k As Integer
     Dim str_header As String
     
@@ -162,14 +162,14 @@ End Sub
 
 
 Public Sub Array_Drop(ByRef ar_Array As Variant, Optional ByVal int_col_num = Empty, Optional ByVal str_header = Empty)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Drop
 'This sub drops one column of a given array based on a specified str_header name
 'ar_Array : the array containing the str_headers & the data
 'int_col_num : the column numbers to drop (only used if str_header is empty)
 'str_header : the str_header name to drop
-'###########################################################################################################
-    Dim int_LB1, int_LB2, int_UB1, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_LB2, int_UB1, int_UB2 As Integer
     Dim int_i, int_j, int_k As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -211,7 +211,7 @@ End Sub
 
 
 Public Sub Array_Append(ByRef ar_Array1 As Variant, ByRef ar_Array2 As Variant, Optional ByVal str_append_direction = "V", Optional ByVal bo_headers = False)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Append
 'This sub append a second array on a first array
 'If vertical (resp. horizontal) append then the number of columns (resp.rows) of both arrays should be equal
@@ -219,8 +219,8 @@ Public Sub Array_Append(ByRef ar_Array1 As Variant, ByRef ar_Array2 As Variant, 
 'ar_Array2, : the second array which will be appended on the base/first array
 'str_append_direction : Vertical = "V", Horizontal ="H"
 'bo_headers : If TRUE then the bo_headers of the first array will be preserved after appending
-'###########################################################################################################
-    Dim int_LB1_array1, int_UB1_array1, int_LB2_array1, int_UB2_array1 As Integer
+'***********************************************************************************
+Dim int_LB1_array1, int_UB1_array1, int_LB2_array1, int_UB2_array1 As Integer
     Dim int_LB1_array2, int_UB1_array2, int_LB2_array2, int_UB2_array2 As Integer
     Dim int_i, int_j, int_lag As Integer
     Dim ar_ArrayCopy As Variant
@@ -280,15 +280,15 @@ End Sub
 
 Public Sub Array_LeftJoin(ByRef ar_ArrayLeft As Variant, ByRef ar_ArrayRight As Variant, _
 ar_Keys As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_LeftJoin
-'This function performs a left join between two arrays based on given key(s)
+'This fct performs a left join between two arrays based on given key(s)
 'Bith arrays should contains variable names/headers in their first row
 'ar_Array1, : the left array
 'ar_Array2, : the right array
 'ar_Keys : array containing the pairwise keys of first array and second array - Example : ar_Keys=array(array("key1_array1","key1_array2"),array("key2_array1","key2_array2"),...)
-'###########################################################################################################
-    Dim int_LB1_left, int_UB1_left, int_LB2_left, int_UB2_left As Integer
+'***********************************************************************************
+Dim int_LB1_left, int_UB1_left, int_LB2_left, int_UB2_left As Integer
     Dim int_LB1_right, int_UB1_right, int_LB2_right, int_UB2_right As Integer
     Dim int_i, int_j, int_ii, int_ColLeft, int_ColRight As Integer
     Dim str_key As Variant
@@ -361,15 +361,15 @@ End Sub
 
 
 Public Sub Array_LoadConstant(ByRef ar_Array As Variant, str_const_value, Optional ByVal int_start_row = Empty, Optional ByVal int_col = Empty)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_LoadConstant
 'This sub writes a constant value in a given column of an array
 'ar_Array : array which will contain the data
 'str_const_value : constant to be written
 'int_start_row : first row starting the writing
 'int_col : column number in ar_Array - i.e. where to put the data
-'###########################################################################################################
-    Dim int_LB, int_UB As Integer
+'***********************************************************************************
+Dim int_LB, int_UB As Integer
     Dim int_i As Integer
     
     int_LB = LBound(ar_Array, 1)
@@ -392,7 +392,7 @@ End Sub
 
 Public Sub Array_LoadRow(ByRef ar_Array As Variant, ar_data As Variant, Optional ByVal int_row_array As Integer, Optional ByVal int_row_data As Integer, _
 Optional ar_exitValues As Variant = Empty, Optional ByVal int_start_col_data = Empty, Optional ByVal int_exit_row = Empty)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_LoadRow
 'This sub loads one row of data from a given array into a second one with specific conditions
 'ar_Array : array which will contain the loaded row
@@ -402,8 +402,8 @@ Optional ar_exitValues As Variant = Empty, Optional ByVal int_start_col_data = E
 'ar_exitValues : array containing the characters triggering the exit of the loading process - Example :  ar_exitValues=Array("", Empty)
 'int_start_col_data : first row used in ar_Data for loading the data
 'int_exit_row : row used in ar_Data for stopping the loading process
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2, int_LB_data, int_UB_data, int_j As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2, int_LB_data, int_UB_data, int_j As Integer
     
     int_LB1 = LBound(ar_Array, 1)
     int_UB1 = UBound(ar_Array, 1)
@@ -430,7 +430,7 @@ End Sub
 
 Public Sub Array_LoadColumnFromRow(ByRef ar_Array As Variant, ar_data As Variant, ByVal int_col_array As Integer, ByVal int_row_data As Integer, _
 ar_exitValues As Variant, Optional ByVal int_start_col_data = Empty, Optional ByVal int_exit_row = Empty)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_LoadColumnFromRow
 'This sub loads one row of data from a given array into a column of a second one with specific conditions
 'ar_Array : array which will contain the loaded column
@@ -440,8 +440,8 @@ ar_exitValues As Variant, Optional ByVal int_start_col_data = Empty, Optional By
 'ar_exitValues : array containing the characters triggering the exit of the loading process - Example :  ar_exitValues=Array("", Empty)
 'int_start_col_data : first col used in ar_Data for loading the data
 'int_exit_row : row used in ar_Data for stopping the loading process
-'###########################################################################################################
-    Dim int_LB, int_UB, int_i As Integer
+'***********************************************************************************
+Dim int_LB, int_UB, int_i As Integer
     
     int_LB = LBound(ar_data, 2)
     int_UB = UBound(ar_data, 2)
@@ -457,7 +457,7 @@ End Sub
 
 Public Sub Array_LoadColumn(ByRef ar_Array As Variant, ByVal ar_data As Variant, ByVal int_col_array As Integer, ByVal int_col_data As Integer, _
 ar_exitValues As Variant, Optional ByVal int_start_row_data = Empty, Optional ByVal int_exit_col = Empty, Optional ByVal bo_transpose = False)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_LoadColumn
 'This sub loads one column of data from a given array into a second one with specific conditions
 'ar_Array : array which will contain the loaded column
@@ -468,8 +468,8 @@ ar_exitValues As Variant, Optional ByVal int_start_row_data = Empty, Optional By
 'int_start_row_data : first row used in ar_Data for loading the data
 'int_exit_col : column used in ar_Data for stopping the loading process
 'bo_transpose : if TRUE then ar_Data is translated before the loading
-'###########################################################################################################
-    Dim int_LB, int_UB, int_i As Integer
+'***********************************************************************************
+Dim int_LB, int_UB, int_i As Integer
     
     int_LB = LBound(ar_data, 1)
     int_UB = UBound(ar_data, 1)
@@ -488,7 +488,7 @@ End Sub
 Public Sub Array_LoadData(ByRef ar_Array As Variant, ar_data As Variant, _
 ar_exitValues As Variant, Optional ByVal int_exit_row = Empty, Optional ByVal int_exit_col = Empty, _
 Optional ByVal int_start_row_data = Empty, Optional ByVal int_start_col_data = Empty, Optional ByVal int_header_row = Empty)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_LoadData
 'This sub loads all the data from a given array into a second one with specific conditions
 'ar_Array : array which will contain the loaded data
@@ -499,8 +499,8 @@ Optional ByVal int_start_row_data = Empty, Optional ByVal int_start_col_data = E
 'int_start_row_data : first row used in ar_Data for loading the data
 'int_start_col_data : first column used in ar_Data for loading the data
 'int_header_row : row used in ar_Data for defining the header loaded in ar_Array
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_LB1_data, int_UB1_data, int_LB2_data, int_UB2_data As Integer
     Dim int_i, int_j, int_lag As Integer
     
@@ -557,13 +557,13 @@ End Sub
 
 
 Public Sub Array_Copy(ByRef ar_ArrayToCopy As Variant, ByRef ar_Array As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Copy
 'This sub copy an array to another one
 'ar_ArrayToCopy : array to be copied
 'ar_Array : array containing the copied data
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     Dim ar_ArrayCopy As Variant
     
@@ -590,13 +590,13 @@ End Sub
 
 
 Public Sub Array_Cut1D(ByRef ar_Array As Variant, ar_exitValues As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Cut1D
 'This sub reduces an 1D array to the first non-empty block of elements
 'ar_Array : array containing the elements and subject to reduction
 'ar_exitValues : array containing the characters triggering the cutting process - Example :  ExitValues=Array("", Empty)
-'###########################################################################################################
-    Dim int_LB, int_UB As Integer
+'***********************************************************************************
+Dim int_LB, int_UB As Integer
     Dim int_i As Integer
     
     int_LB = LBound(ar_Array)
@@ -622,13 +622,13 @@ End Sub
 
 
 Public Sub Array_Cut(ByRef ar_Array As Variant, ar_exitValues As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_Cut
 'This sub reduces an array to the first non-empty block of elements
 'ar_Array : array containing the elements and subject to reduction
 'ar_exitValues : array containing the characters triggering the cutting process - Example :  ExitValues=Array("", Empty)
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -656,12 +656,12 @@ End Sub
 
 
 Public Sub Array_CutAtCol(ByRef ar_Array As Variant, int_col As Integer)
-'###########################################################################################################
+'***********************************************************************************
 'This sub reduces an array to a given number of columns
 'ar_Array : array containing the data and subject to column reduction
 'int_col : number or colums to keep or starting cut column number
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -689,14 +689,14 @@ Public Sub Array_CutAtCol(ByRef ar_Array As Variant, int_col As Integer)
 End Sub
 
 Public Sub Array_CutAtLastCol(ByRef ar_Array As Variant, ar_exitValues As Variant, int_row As Integer)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_CutAtLastCol
 'This sub reduces an array to the first non-empty block of columns
 'ar_Array : array containing the data and subject to column reduction
 'ExitValues : array containing the characters triggering the cutting process - Example :  ExitValues=Array("", Empty)
 'int_row : int_row number used in ar_Array for testing the cutting process
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -729,13 +729,13 @@ End Sub
 
 
 Public Sub Array_CutAtRow(ByRef ar_Array As Variant, ByVal int_row As Integer)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_CutAtRow
 'This sub reduces an array to a given number of int_rows
 'ar_Array : array containing the data and subject to int_row reduction
 'int_row : number or rows to keep or starting cut column number
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -764,14 +764,14 @@ End Sub
 
 
 Public Sub Array_RemoveRowCol(ByRef ar_Array As Variant, ByVal int_row_num As Integer, Optional ByVal bo_row = True)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_RemoveRowCol
 'This sub removes one given row from an array
 'ar_Array : array containing the data and subject to row reduction
 'int_row_num : the row/col number to remove
 'bo_row : if TRUE then it removes row (otherwise column)
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_row, int_col As Integer
     Dim ar_ArrayCopy As Variant
     
@@ -804,14 +804,14 @@ End Sub
 
 
 Public Sub Array_RemoveRowIf(ByRef ar_Array As Variant, ByVal int_col_num As Integer, ar_exitValues As Variant)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_RemoveRowIf
 'This sub removes one given row from an array if the value within a given colmun is in exit values
 'ar_Array : array containing the data and subject to row reduction
 'int_col_num : the row number to remove
 'ar_exitValues : array containing the characters triggering the cutting process
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim ar_ArrayCopy As Variant
     Dim int_row, int_col As Integer
     
@@ -835,13 +835,13 @@ End Sub
 
 
 Public Sub Array_RemoveEmptyCols(ByRef ar_Array As Variant, Optional ByVal bo_header = Empty)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_RemoveEmptyCols
 'This sub reduces an array to non-empty columns
 'ar_Array : array containing the data and subject to column reduction
 'bo_header : if TRUE then first row contains bo_headers
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_k, int_row, int_col, int_lag As Integer
     
     Dim ar_ArrayCopy As Variant
@@ -902,14 +902,14 @@ End Sub
 
 
 Public Sub Array_CutAtLastRow(ByRef ar_Array As Variant, ar_exitValues As Variant, ByVal int_col As Integer)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_CutAtLastRow
 'This sub reduces an array to the first non-empty block of rows
 'ar_Array : array containing the data and subject to column reduction
 'ar_exitValues : array containing the characters triggering the cutting process - Example :  ExitValues=Array("", Empty)
 'int_col : column number used in ar_Array for testing the cutting process
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -944,15 +944,15 @@ End Sub
 
 
 Public Sub Array_AddHeader(ByRef ar_Array As Variant, ar_headers As Variant, Optional ByVal int_col_headers = Empty, Optional ByVal bo_shift = False)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_AddHeader
 'This sub add headers/variable name as first row to a given array
 'ar_Array : array containing the data
 'ar_headers : array containing the headers name
 'int_col_headers:  Print
 'bo_shift : if TRUE then first row is bo_shifted before adding the headers as first row
-'###########################################################################################################
-    Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     
     int_LB1 = LBound(ar_Array, 1)
@@ -992,9 +992,9 @@ End Sub
 
 
 Function find_row_col(ar_Array As Variant, ByVal str_text_to_find As String, Optional ByVal int_row = Empty, Optional ByVal int_col = Empty, Optional ByVal int_start_row = 1, Optional ByVal int_start_col = 1) As Variant
-'###########################################################################################################
+'***********************************************************************************
 ' Function find_row_col
-' This function the position of a given string within an array : row & column
+' This fct the position of a given string within an array : row & column
 ' ar_Array : Input array
 ' str_text_to_find : String for which position (row,col) is searched
 ' int_row : if provided then the string position is only searched on this row (then only the column is searched)
@@ -1002,8 +1002,8 @@ Function find_row_col(ar_Array As Variant, ByVal str_text_to_find As String, Opt
 ' int_start_row : starting row for string position searching
 ' int_start_col : starting col for string position searching
 ' bo1D : if TRUE then consider the arrays as 1-dimensional
-'###########################################################################################################
-    'Declare
+'***********************************************************************************
+'Declare
     Dim int_irow, int_icol As Integer
     Dim bo_flg As Boolean
     Dim ar_row_col(1 To 2) As Integer
@@ -1042,15 +1042,15 @@ End Function
 
 
 Public Function IsInArray(str_text_to_find As Variant, ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0) As Boolean
-'###########################################################################################################
+'***********************************************************************************
 ' Function IsInArray
-' This function checks whether a string belongs to an ar_Arrayay/list
+' This fct checks whether a string belongs to an ar_Arrayay/list
 ' str_text_to_find : string to be found in input ar_Arrayay
 ' ar_Array : input ar_Arrayay
 ' int_col : if provided then the string sreaching will be performed only in the given column
 ' int_row : if provided then the string sreaching will be performed only in the given row
-'###########################################################################################################
-    'Declare
+'***********************************************************************************
+'Declare
     Dim int_i, int_LB, int_UB As Integer
     Dim Str
     
@@ -1082,7 +1082,7 @@ End Function
 
 
 Public Function Array_Max(ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0, Optional ByVal str_header_val As String = "") As Double
-'###########################################################################################################
+'***********************************************************************************
 ' Function Array_Max(ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0)
 ' This function returns the maximulm value on a given row or given column of an array
 ' ar_Array : input Array
@@ -1091,8 +1091,8 @@ Public Function Array_Max(ar_Array As Variant, Optional ByVal int_col As Integer
 ' int_start_col : if provided then the max. finding will be eprformed only after the given column
 ' int_start_row : if provided then the max. finding will be eprformed only after the given row
 ' str_header_val : if provided the max will be computed only for the headers containing this string value
-'###########################################################################################################
-    Dim int_LB, int_UB, int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB, int_UB, int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     Dim double_max As Double
     
@@ -1145,17 +1145,17 @@ End Function
 
 
 Public Function Array_Mean(ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0, Optional ByVal str_header_val As String = "", Optional ByVal str_type As String = "") As Double
-'###########################################################################################################
+'***********************************************************************************
 ' Function Array_Mean(ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0)
-' This function returns the mean value on a given row or given column of an array
+' This fct returns the mean value on a given row or given column of an array
 ' ar_Array : input Array
 ' int_col : if provided then the mean will be performed only in the given column
 ' int_row : if provided then the mean will be performed only in the given row
 ' int_start_col : if provided then the mean. finding will be eprformed only after the given column
 ' int_start_row : if provided then the mean. finding will be eprformed only after the given row
 ' str_header_val : if provided the mean will be computed only for the headers containing this string value
-'###########################################################################################################
-    Dim int_LB, int_UB, int_LB1, int_UB1, int_LB2, int_UB2 As Integer
+'***********************************************************************************
+Dim int_LB, int_UB, int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_nb, int_i, int_j As Integer
     Dim double_mean As Double
     
@@ -1224,16 +1224,16 @@ End Function
 
 
 Public Function Array_Unique(ar_Array As Variant, ar_exitValues As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0) As Variant
-'###########################################################################################################
-' Function Array_Unique(ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0)
-' This function returns an array with the unique elements of ar_Array specified column or row
+'***********************************************************************************
+' Fct Array_Unique(ar_Array As Variant, Optional ByVal int_col As Integer = 0, Optional ByVal int_row As Integer = 0, Optional ByVal int_start_col As Integer = 0, Optional ByVal int_start_row As Integer = 0)
+' This fct returns an array with the unique elements of ar_Array specified column or row
 ' ar_Array : input Array
 ' ar_exitValues : array containing the characters triggering the exit of the process - Example :  ar_exitValues=Array("", Empty)
 ' int_col : if provided then the unique elements will be extracted only in the given column
 ' int_row : if provided then the unique elements will be extracted only in the given row
 ' int_start_col : if provided then the unique elements will be extracted only after the given column
 ' int_start_row : if provided then the unique elements will be extracted only after the given row
-'###########################################################################################################    Dim ar_Array_Unique As Variant
+'***********************************************************************************
     LB1 = LBound(ar_Array, 1)
     LB2 = LBound(ar_Array, 2)
     UB1 = UBound(ar_Array, 1)
@@ -1275,13 +1275,13 @@ End Function
 
 
 Public Sub Array_ShiftDim(ByRef ar_Array As Variant, Optional ByVal int_row_shift = 0, Optional ByVal int_col_shift = 0)
-'###########################################################################################################
+'***********************************************************************************
 'Sub Array_ShiftDim
 'This sub shift the dimensions index of an array
 'ar_Array : array containing the data
 'int_row_shift : number of row dimension to shift
 'int_col_headers:  number of col dimension to shift
-'###########################################################################################################
+'***********************************************************************************
     Dim int_LB1, int_UB1, int_LB2, int_UB2 As Integer
     Dim int_i, int_j As Integer
     

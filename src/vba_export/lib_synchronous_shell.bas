@@ -61,7 +61,7 @@ Public Function ShellAndWait(ShellCommand As String, _
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 ' ShellAndWait
 '
-' This function calls Shell and passes to it the command text in ShellCommand. The function
+' This fct calls Shell and passes to it the command text in ShellCommand. The function
 ' then waits for TimeOutMs (in milliseconds) to expire.
 '
 '   Parameters:
