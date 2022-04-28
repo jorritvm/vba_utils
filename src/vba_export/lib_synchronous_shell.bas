@@ -326,7 +326,7 @@ Function run_app_in_synchronous_shell(ByVal executable As String, _
 End Function
 
 
-Function look_for_string_in_last_line_of_file(ByVal text_file As String, ByVal string_to_look_for As String) As booolean
+Function look_for_string_in_last_line_of_file(ByVal text_file As String, ByVal string_to_look_for As String) As Boolean
 '***************************************************************************
 'Purpose: returns true/false depending whether a given string is found at the end of the text file
 'Inputs text_file: string with text file path
