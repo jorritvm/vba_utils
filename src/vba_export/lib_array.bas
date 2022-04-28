@@ -1052,7 +1052,7 @@ Public Function IsInArray(str_text_to_find As Variant, ar_Array As Variant, Opti
 '***********************************************************************************
 'Declare
     Dim int_i, int_LB, int_UB As Integer
-    Dim Str
+    Dim str
     
     'Search the string according the row & column user specifications
     If int_row = 0 Then
@@ -1065,14 +1065,14 @@ Public Function IsInArray(str_text_to_find As Variant, ar_Array As Variant, Opti
     For int_i = int_LB To int_UB
         If int_col = 0 Then
             If int_row = 0 Then
-                Str = ar_Array(int_i)
+                str = ar_Array(int_i)
             Else
-                Str = ar_Array(int_row, int_i)
+                str = ar_Array(int_row, int_i)
             End If
         Else
-            Str = ar_Array(int_i, int_col)
+            str = ar_Array(int_i, int_col)
         End If
-        If Str = str_text_to_find Then
+        If str = str_text_to_find Then
             IsInArray = True
             Exit Function
         End If
